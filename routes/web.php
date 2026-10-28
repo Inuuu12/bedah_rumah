@@ -4,14 +4,45 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/api/penerima-kecamatan/{id_kec}', [HomeController::class, 'getPenerimaByKecamatan'])->name('api.penerima.kecamatan');
+
+// Helper route untuk migrasi database di server shared hosting / cPanel
+Route::get('/migrate', function () {
+    try {
+        Artisan::call('migrate', ['--force' => true]);
+        $output = Artisan::output();
+
+        if (Schema::hasTable('users')) {
+            User::updateOrCreate(
+                ['email' => 'admin@bogorkab.go.id'],
+                [
+                    'name' => 'Administrator Pemkab Bogor',
+                    'password' => Hash::make('admin123'),
+                ]
+            );
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Tabel sistem (users, sessions, cache, jobs) berhasil dibuat & akun admin siap!',
+            'output' => $output,
+        ]);
+    } catch (Throwable $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Gagal menjalankan migrasi: '.$e->getMessage(),
+        ], 500);
+    }
+});
 
 // Authentication Routes
 Route::get('/login', function () {
@@ -27,6 +58,15 @@ Route::get('/admin/login', function () {
 });
 
 Route::post('/login', function (Request $request) {
+    // Otomatis buat tabel users jika belum dimigrasi di server cPanel
+    if (! Schema::hasTable('users')) {
+        try {
+            Artisan::call('migrate', ['--force' => true]);
+        } catch (Throwable $e) {
+            // Fallback tangani jika DDL tidak diizinkan
+        }
+    }
+
     $request->validate([
         'email' => ['required', 'string'],
         'password' => ['required', 'string'],
@@ -42,29 +82,39 @@ Route::post('/login', function (Request $request) {
     // 1. Cek jika input adalah admin default (menerima 'admin', 'admin123', dsb)
     $isAdminInput = in_array(strtolower($loginInput), ['admin', 'admin@bogorkab.go.id']);
     if ($isAdminInput && in_array($password, ['admin', 'admin123', 'admin#123', 'password', '123456'])) {
-        $user = User::firstOrCreate(
-            ['email' => 'admin@bogorkab.go.id'],
-            [
-                'name' => 'Administrator Pemkab Bogor',
-                'password' => Hash::make($password),
-            ]
-        );
+        try {
+            $user = User::firstOrCreate(
+                ['email' => 'admin@bogorkab.go.id'],
+                [
+                    'name' => 'Administrator Pemkab Bogor',
+                    'password' => Hash::make($password),
+                ]
+            );
 
-        $user->password = Hash::make($password);
-        $user->save();
+            $user->password = Hash::make($password);
+            $user->save();
 
-        Auth::login($user, $remember);
-        $request->session()->regenerate();
+            Auth::login($user, $remember);
+            $request->session()->regenerate();
 
-        return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.dashboard');
+        } catch (Throwable $e) {
+            return back()->withErrors([
+                'email' => 'Tabel sistem belum siap di server: '.$e->getMessage().'. Silakan akses /migrate untuk inisialisasi tabel.',
+            ])->onlyInput('email');
+        }
     }
 
     // 2. Cek otentikasi standar Laravel via tabel users
     $email = $isAdminInput ? 'admin@bogorkab.go.id' : $loginInput;
-    if (Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
-        $request->session()->regenerate();
+    try {
+        if (Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
+            $request->session()->regenerate();
 
-        return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.dashboard');
+        }
+    } catch (Throwable $e) {
+        // Fallback jika tabel users bermasalah
     }
 
     // 3. Fallback: cek ke tabel bawaan legacy app_md_user
