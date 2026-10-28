@@ -1,4 +1,4 @@
-{{-- Hero Banner Bagian Depan Atas - Tema Ijo Tosca Solid --}}
+﻿{{-- Hero Banner Bagian Depan Atas - Tema Ijo Tosca Solid --}}
 <section class="relative bg-teal-950 text-white pt-16 overflow-hidden text-center -mt-px" style="padding-bottom: 10rem;">
 
     {{-- Background Image dengan Overlay Bernuansa Teal (Agak Lebih Gelap) --}}
@@ -16,7 +16,7 @@
         
         {{-- Tagline / Label Kecil di Atas --}}
         <p class="text-xs sm:text-[13px] font-bold tracking-widest uppercase text-teal-200 drop-shadow-md">
-            PORTAL RESMI PELAYANAN BEDAH RUMAH KABUPATEN BOGOR
+            PORTAL RESMI BEDAH RUMAH KABUPATEN BOGOR
         </p>
 
         {{-- Judul Besar --}}
@@ -26,9 +26,7 @@
 
         {{-- Paragraf Penjelas --}}
         <p class="max-w-3xl mx-auto text-xs sm:text-sm md:text-[14.5px] leading-relaxed text-teal-100 font-normal drop-shadow">
-            Portal resmi satu pintu pengajuan permohonan bantuan Rumah Tidak Layak Huni (RTLH), pendataan mandiri, dan
-            verifikasi faktual ke seluruh wilayah Pemerintah Kabupaten Bogor. Terintegrasi secara
-            cepat, transparan, dan terhubung langsung dengan instansi tujuan.
+            Portal resmi informasi Bantuan Rumah Tidak Layak Huni (RTLH) Pemerintah Kabupaten Bogor.
         </p>
 
     </div>
@@ -65,7 +63,7 @@
 
                 {{-- Sub-deskripsi Ringkas --}}
                 <p class="text-xs text-slate-500 mt-3 mb-5 leading-relaxed">
-                    Data pemantauan program bedah rumah perbaikan fisik RTLH melalui Anggaran Pendapatan &amp; Belanja Daerah (APBD) Kabupaten Bogor.
+                    Data pemantauan program bedah rumah rehabilitasi RTLH melalui Anggaran Pendapatan &amp; Belanja Daerah (APBD) Kabupaten Bogor.
                 </p>
 
                 {{-- 3 Metrik / Statistik Simple: Hanya Nama dan Unit --}}
@@ -85,7 +83,7 @@
                     {{-- 2. Dalam Proses --}}
                     <div class="bg-slate-50/80 hover:bg-amber-50/40 rounded-xl p-4 sm:p-5 border border-slate-100 transition-colors">
                         <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                             Dalam Proses
+                             Pembangunan
                         </span>
                         <div class="flex items-baseline gap-1.5">
                             <span class="text-xl sm:text-2xl font-black tracking-tight">{{ number_format($totalRtlhPersiapan ?? 1502, 0, ',', '.') }}</span>
@@ -155,7 +153,7 @@
                     {{-- 2. Dalam Proses --}}
                     <div class="bg-slate-50/80 hover:bg-amber-50/40 rounded-xl p-4 sm:p-5 border border-slate-100 transition-colors">
                         <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                             Dalam Proses
+                            Pembangunan
                         </span>
                         <div class="flex items-baseline gap-1.5">
                             <span class="text-xl sm:text-2xl font-black tracking-tight">{{ number_format($totalBspsPersiapan ?? 9795, 0, ',', '.') }}</span>
