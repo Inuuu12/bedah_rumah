@@ -21,7 +21,7 @@
                         id="q" 
                         value="{{ request('q') }}" 
                         placeholder="Ketik nama penerima, NIK, atau alamat..." 
-                        class="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg pl-8 pr-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 font-medium"
+                        class="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg pl-8 pr-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600 font-medium"
                     >
                     <svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -35,7 +35,7 @@
                 <select 
                     name="kecamatan" 
                     id="kecamatan" 
-                    class="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 font-medium"
+                    class="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600 font-medium"
                 >
                     <option value="">-- Semua Kecamatan (40) --</option>
                     @foreach ($kecamatanList as $kec)
@@ -52,7 +52,7 @@
                 <select 
                     name="program" 
                     id="program" 
-                    class="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 font-medium"
+                    class="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600 font-medium"
                 >
                     <option value="">-- Semua Program --</option>
                     <option value="RTLH" {{ request('program') == 'RTLH' ? 'selected' : '' }}>RTLH APBD BOGOR</option>
@@ -67,7 +67,7 @@
                     <select 
                         name="status" 
                         id="status" 
-                        class="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 font-medium"
+                        class="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600 font-medium"
                     >
                         <option value="">-- Semua Status --</option>
                         <option value="PERSIAPAN" {{ request('status') == 'PERSIAPAN' ? 'selected' : '' }}>PERSIAPAN</option>
@@ -78,7 +78,7 @@
 
                 <button 
                     type="submit" 
-                    class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg transition-colors shadow-xs shrink-0"
+                    class="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white text-xs font-semibold rounded-lg transition-colors shadow-xs shrink-0"
                 >
                     Filter
                 </button>
@@ -162,7 +162,7 @@
                             </td>
                             <td class="py-3 px-3 whitespace-nowrap">
                                 @if (str_contains($row->cat_bnba, 'APBD'))
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-teal-50 text-teal-800 border border-teal-200">
                                         RTLH APBD
                                     </span>
                                 @else
@@ -173,7 +173,7 @@
                             </td>
                             <td class="py-3 px-3 whitespace-nowrap">
                                 @if ($row->st_akhir === 'SELESAI')
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-teal-50 text-teal-800 border border-teal-200">
                                         SELESAI
                                     </span>
                                 @elseif ($row->st_akhir === 'PROSES')
@@ -191,7 +191,7 @@
                                     <button 
                                         type="button" 
                                         onclick="showDetailModal({{ $row->id_bnba }})" 
-                                        class="px-2 py-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded border border-emerald-200 transition-colors"
+                                        class="px-2 py-1 text-[11px] font-semibold text-teal-700 bg-teal-50 hover:bg-teal-100 rounded border border-teal-200 transition-colors"
                                         title="Lihat Detail Lengkap"
                                     >
                                         Detail
@@ -285,7 +285,7 @@
                 <select 
                     name="st_akhir" 
                     id="modal-st-akhir" 
-                    class="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg px-3 py-2.5 text-slate-800 font-medium focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                    class="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg px-3 py-2.5 text-slate-800 font-medium focus:ring-2 focus:ring-teal-600 focus:outline-none"
                     required
                 >
                     <option value="PERSIAPAN">PERSIAPAN (Tahap verifikasi & administrasi)</option>
@@ -298,7 +298,7 @@
                 <button type="button" onclick="closeStatusModal()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold rounded-lg text-xs transition-colors">
                     Batal
                 </button>
-                <button type="submit" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg text-xs transition-colors shadow-xs">
+                <button type="submit" class="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold rounded-lg text-xs transition-colors shadow-xs">
                     Simpan Perubahan
                 </button>
             </div>
@@ -326,9 +326,9 @@
                 subheading.innerText = `ID #${d.id_bnba} • Tahun Anggaran ${d.thn_bnba}`;
 
                 const coordHtml = res.koordinat ? `
-                    <div class="p-3 bg-emerald-50/70 border border-emerald-200 rounded-lg">
-                        <span class="block text-[11px] font-bold text-emerald-800">Koordinat Wilayah Desa (${res.koordinat.nama || d.xkel})</span>
-                        <div class="mt-1 font-mono text-[11px] text-emerald-900">Lat: ${res.koordinat.lat}, Long: ${res.koordinat.long}</div>
+                    <div class="p-3 bg-teal-50/70 border border-teal-200 rounded-lg">
+                        <span class="block text-[11px] font-bold text-teal-800">Koordinat Wilayah Desa (${res.koordinat.nama || d.xkel})</span>
+                        <div class="mt-1 font-mono text-[11px] text-teal-900">Lat: ${res.koordinat.lat}, Long: ${res.koordinat.long}</div>
                     </div>
                 ` : '<div class="text-slate-400 text-[11px] italic">Koordinat GPS khusus belum tercatat.</div>';
 
@@ -376,7 +376,7 @@
                         <div class="grid grid-cols-2 gap-3 pb-3 border-b border-slate-100">
                             <div>
                                 <span class="text-slate-400 block text-[10px] uppercase font-bold">Program Bantuan</span>
-                                <span class="font-bold ${d.cat_bnba.includes('APBD') ? 'text-emerald-700' : 'text-sky-700'}">${d.cat_bnba}</span>
+                                <span class="font-bold ${d.cat_bnba.includes('APBD') ? 'text-teal-800' : 'text-sky-700'}">${d.cat_bnba}</span>
                             </div>
                             <div>
                                 <span class="text-slate-400 block text-[10px] uppercase font-bold">Status Pelaksanaan</span>
