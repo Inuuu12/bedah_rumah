@@ -164,34 +164,6 @@
                     </button>
                 </div>
             </form>
-
-            {{-- Security / Help Notice & Quick Credential Hint --}}
-            <div class="mt-6 pt-5 border-t border-slate-100">
-                <div class="p-3 bg-emerald-50/80 rounded-xl border border-emerald-200/80 text-left space-y-2">
-                    <div class="flex items-center justify-between">
-                        <span class="text-[11px] font-bold text-emerald-900 flex items-center gap-1.5">
-                            <svg class="w-3.5 h-3.5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
-                            </svg>
-                            Akun Administrator Default:
-                        </span>
-                        <button 
-                            type="button" 
-                            onclick="fillAdminCredentials()" 
-                            class="text-[10px] font-bold text-emerald-800 hover:text-emerald-950 bg-emerald-200/70 hover:bg-emerald-200 px-2 py-0.5 rounded-md transition-all active:scale-95 cursor-pointer shadow-2xs"
-                        >
-                            Gunakan Akun Ini
-                        </button>
-                    </div>
-                    <div class="text-[11px] text-slate-700 space-y-0.5 pt-0.5 border-t border-emerald-200/50">
-                        <div>Username: <strong class="font-mono text-emerald-950 bg-white/70 px-1 py-0.5 rounded">admin</strong></div>
-                        <div>Password: <strong class="font-mono text-emerald-950 bg-white/70 px-1 py-0.5 rounded">admin123</strong> atau <strong class="font-mono text-emerald-950 bg-white/70 px-1 py-0.5 rounded">admin</strong></div>
-                    </div>
-                </div>
-                <p class="text-[11px] text-slate-400 leading-relaxed mt-3 text-center">
-                    Akses terbatas untuk staf &amp; pengelola program RTLH / BSPS Dinas Perumahan Pemkab Bogor.
-                </p>
-            </div>
         </div>
     </main>
 
