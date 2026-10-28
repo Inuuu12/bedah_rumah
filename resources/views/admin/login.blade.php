@@ -169,10 +169,6 @@
             <div class="mt-6 pt-5 border-t border-slate-100">
                 <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-left space-y-1">
                     <span class="block text-[11px] font-bold text-slate-700">Akun Pengelola Default:</span>
-                    <div class="flex items-center justify-between text-[11px] text-slate-600 font-mono">
-                        <span>Username: <strong class="text-slate-900">admin</strong></span>
-                        <span>Password: <strong class="text-slate-900">admin123</strong></span>
-                    </div>
                 </div>
                 <p class="text-[11px] text-slate-400 leading-relaxed mt-3 text-center">
                     Akses terbatas untuk staf &amp; pengelola program RTLH / BSPS Dinas Perumahan Pemkab Bogor.

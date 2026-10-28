@@ -38,6 +38,15 @@
             -webkit-font-smoothing: antialiased;
         }
         [x-cloak] { display: none !important; }
+        .sidebar-logo-img {
+            width: 36px !important;
+            height: 45px !important;
+            max-width: 36px !important;
+            max-height: 45px !important;
+            object-fit: contain !important;
+            display: inline-block !important;
+            flex-shrink: 0 !important;
+        }
     </style>
 </head>
 <body class="h-full text-slate-800 flex flex-col md:flex-row antialiased overflow-x-hidden">
@@ -45,7 +54,7 @@
     {{-- Mobile Header --}}
     <div class="md:hidden bg-slate-900 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 sticky top-0 z-40">
         <div class="flex items-center gap-2.5">
-            <img src="/images/lambang-kabupaten-bogor.svg" alt="Kabupaten Bogor" class="h-8 w-auto">
+            <img src="/images/lambang-kabupaten-bogor.svg" alt="Kabupaten Bogor" class="sidebar-logo-img" style="width: 28px; height: 35px; max-width: 28px; max-height: 35px;">
             <div>
                 <span class="block text-xs font-bold tracking-tight text-white leading-tight">Admin Bedah Rumah</span>
                 <span class="block text-[10px] text-slate-400">Kabupaten Bogor</span>
@@ -67,14 +76,14 @@
     <div id="sidebar-backdrop" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-40 hidden md:hidden"></div>
 
     {{-- Sidebar Navigation --}}
-    <aside id="admin-sidebar" class="fixed md:sticky top-0 left-0 h-screen w-64 bg-slate-900 text-slate-300 flex flex-col justify-between border-r border-slate-800 z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out shrink-0">
+    <aside id="admin-sidebar" class="fixed md:sticky top-0 left-0 h-screen w-64 max-w-[16rem] bg-slate-900 text-slate-300 flex flex-col justify-between border-r border-slate-800 z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out shrink-0 overflow-y-auto">
         
         <div>
             {{-- Brand / Identity --}}
             <div class="p-5 border-b border-slate-800 flex items-center gap-3">
-                <img src="/images/lambang-kabupaten-bogor.svg" alt="Lambang Kabupaten Bogor" class="h-10 w-auto shrink-0 drop-shadow-sm">
-                <div>
-                    <h1 class="text-sm font-bold text-white tracking-tight leading-tight">BEDAH RUMAH</h1>
+                <img src="/images/lambang-kabupaten-bogor.svg" alt="Lambang Kabupaten Bogor" class="sidebar-logo-img drop-shadow-sm" style="width: 36px; height: 45px; max-width: 36px; max-height: 45px;">
+                <div class="min-w-0">
+                    <h1 class="text-sm font-bold text-white tracking-tight leading-tight truncate">BEDAH RUMAH</h1>
                     <p class="text-[11px] text-emerald-400 font-medium">Kabupaten Bogor</p>
                 </div>
             </div>
