@@ -1,5 +1,5 @@
 {{-- Navbar Persis Sesuai Screenshot Portal Kabupaten Bogor - Tema Ijo Tosca --}}
-<nav class="bg-white border-b border-slate-200/80 sticky top-0 z-50 shadow-[0_2px_10px_rgba(0,0,0,0.04)]">
+<nav id="main-navbar" class="bg-white/95 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-50 transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.04)]">
     <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         <div class="flex items-center justify-between h-20">
             
@@ -14,10 +14,10 @@
 
             {{-- Navigasi Menu Desktop: Peta & Dokumentasi --}}
             <div class="hidden md:flex items-center gap-2">
-                <a href="#peta-wilayah" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-bold text-slate-700 hover:text-teal-700 hover:bg-teal-50/80 transition-all">
+                <a href="#peta-wilayah" id="nav-link-peta" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-bold text-slate-700 hover:text-teal-700 hover:bg-teal-50/80 transition-all duration-200">
                     <span>Peta</span>
                 </a>
-                <a href="#dokumentasi" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-bold text-slate-700 hover:text-teal-700 hover:bg-teal-50/80 transition-all">
+                <a href="#dokumentasi" id="nav-link-dokumentasi" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-bold text-slate-700 hover:text-teal-700 hover:bg-teal-50/80 transition-all duration-200">
                     <span>Dokumentasi</span>
                 </a>
                 <div class="h-6 w-px bg-slate-200 mx-1"></div>
@@ -47,14 +47,14 @@
     </div>
 
     {{-- Mobile Menu --}}
-    <div id="mobile-nav" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-3 space-y-1.5 shadow-lg">
-        <a href="#peta-wilayah" onclick="toggleMobileNav()" class="flex items-center gap-2 text-slate-700 hover:text-teal-700 hover:bg-teal-50 font-bold px-3 py-2.5 rounded-lg text-sm transition-colors">
+    <div id="mobile-nav" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t border-slate-100 px-4 py-3 space-y-1.5 shadow-lg">
+        <a href="#peta-wilayah" id="mobile-link-peta" onclick="toggleMobileNav()" class="flex items-center gap-2 text-slate-700 hover:text-teal-700 hover:bg-teal-50 font-bold px-3 py-2.5 rounded-lg text-sm transition-colors">
             <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
             </svg>
             <span>Peta</span>
         </a>
-        <a href="#dokumentasi" onclick="toggleMobileNav()" class="flex items-center gap-2 text-slate-700 hover:text-teal-700 hover:bg-teal-50 font-bold px-3 py-2.5 rounded-lg text-sm transition-colors">
+        <a href="#dokumentasi" id="mobile-link-dokumentasi" onclick="toggleMobileNav()" class="flex items-center gap-2 text-slate-700 hover:text-teal-700 hover:bg-teal-50 font-bold px-3 py-2.5 rounded-lg text-sm transition-colors">
             <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
             </svg>

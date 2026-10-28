@@ -1,5 +1,5 @@
 {{-- Dokumentasi Kegiatan & Realisasi Bedah Rumah Kabupaten Bogor --}}
-<section class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pb-20" id="dokumentasi">
+<section class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pb-20 scroll-mt-24 page-sheet-reveal" id="dokumentasi">
     <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 sm:p-8 lg:p-10">
         
         {{-- Header Dokumentasi --}}
@@ -88,7 +88,7 @@
         {{-- Grid Galeri Foto Dokumentasi --}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
             @foreach ($dokumentasiList as $item)
-                <div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col group">
+                <div class="stagger-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col group">
                     {{-- Foto Rumah --}}
                     <div class="relative h-48 overflow-hidden bg-slate-100">
                         <img src="{{ $item['image'] }}" alt="Dokumentasi {{ $item['nama'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">

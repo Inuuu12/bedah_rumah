@@ -1,7 +1,11 @@
-﻿{{-- Peta Wilayah & Tabel Data Sebaran RTLH & BSPS Kab. Bogor --}}
+
+{{-- Peta Wilayah & Tabel Data Sebaran RTLH & BSPS Kab. Bogor --}}
 <section class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pb-16" id="peta-wilayah">
+
+{{-- Peta Wilayah & Tabel Data Sebaran RTLH & BSPS Kab. Bogor --}}
+<section class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pb-16 scroll-mt-24 page-sheet-reveal" id="peta-wilayah">
     <div class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
-        
+
         {{-- Header Peta & Data --}}
         <div class="p-5 sm:p-7 border-b border-slate-100 bg-white">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -51,11 +55,11 @@
         {{-- Container Utama: Berdampingan Kiri Peta & Kanan Tabel --}}
         <div class="p-4 sm:p-6 bg-slate-50/50">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
-                
+
                 {{-- SISI KIRI: PETA INTERAKTIF LEAFLET (7 Kolom) --}}
                 <div class="lg:col-span-7 flex flex-col">
                     <div class="relative w-full h-[480px] lg:h-[620px] rounded-xl overflow-hidden border border-slate-200/90 shadow-sm bg-slate-100">
-                        
+
                         {{-- Map Element --}}
                         <div id="leaflet-map" class="w-full h-full z-10"></div>
 
@@ -114,7 +118,7 @@
 
                 {{-- SISI KANAN: TABEL DATA BEDAH RUMAH (5 Kolom) --}}
                 <div class="lg:col-span-5 flex flex-col bg-white rounded-xl border border-slate-200/90 shadow-sm overflow-hidden h-[480px] lg:h-[620px]">
-                    
+
                     {{-- Header Panel --}}
                     <div class="p-3.5 border-b border-slate-100 bg-white space-y-2.5 shrink-0">
                         <div class="flex items-center justify-between">
@@ -325,7 +329,7 @@
                     onEachFeature: function(feature, layer) {
                         const ckec = feature.properties.CKEC;
                         const nkec = (feature.properties.NKEC || '').toUpperCase();
-                        
+
                         // Cari data kecamatan yang sesuai
                         const kecData = daftar40Kecamatan.find(k => k.id_kec == ckec || k.nama.replace(/\s+/g, '') === nkec.replace(/\s+/g, ''));
                         const namaKec = kecData ? kecData.nama : nkec;
@@ -523,7 +527,7 @@
 
         // 1. Direct Peta & Highlight Poligon Batas Kecamatan
         document.getElementById('peta-wilayah')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        
+
         let targetBounds = null;
         if (geoJsonKecLayer) {
             geoJsonKecLayer.eachLayer(layer => {
@@ -600,7 +604,7 @@
                             finalLat = kec.lat + (Math.sin(angle) * radius * 0.75);
                             finalLng = kec.lng + (Math.cos(angle) * radius);
                         }
-                        
+
                         const isRtlh = item.program === 'RTLH';
                         return {
                             index: i,
@@ -786,7 +790,7 @@
                     </td>
                     <td class="py-2.5 px-2 text-center">
                         <span class="inline-flex items-center text-[10px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-200/70 group-hover:bg-teal-700 group-hover:text-white transition-all">
-                            Lihat 
+                            Lihat
                         </span>
                     </td>
                 </tr>
@@ -935,7 +939,7 @@
         if (!house || !leafletMap) return;
 
         leafletMap.flyTo([house.lat, house.lng], 15.5, { duration: 0.8 });
-        
+
         markersSebaranLayer.eachLayer(layer => {
             const latLng = layer.getLatLng();
             if (Math.abs(latLng.lat - house.lat) < 0.0001 && Math.abs(latLng.lng - house.lng) < 0.0001) {

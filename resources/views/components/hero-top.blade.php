@@ -35,7 +35,7 @@
 </section>
 
 {{-- 2 Kotak Rekapitulasi Program Bedah Rumah: Kab. Bogor (RTLH) & Pusat Kemenpera (BSPS) --}}
-<section class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 relative z-20 pb-16" id="monitoring-program" style="margin-top: -125px;">
+<section class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 relative z-20 pb-16 page-sheet-reveal" id="monitoring-program" style="margin-top: -125px;">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
         
         {{-- 1. KOTAK KIRI: PEMKAB BOGOR - REHABILITASI RUMAH TIDAK LAYAK HUNI (RTLH) TAHUN 2026 --}}
