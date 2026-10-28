@@ -7,7 +7,7 @@
     <title>@yield('title', 'Admin Panel') • Bedah Rumah Kab. Bogor</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/images/lambang-kabupaten-bogor.svg">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/lambang-kabupaten-bogor.svg') }}">
 
     <!-- Fonts: Poppins via Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,7 +68,7 @@
     {{-- Mobile Header --}}
     <div class="md:hidden bg-slate-900 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 sticky top-0 z-40">
         <div class="flex items-center gap-3">
-            <img src="/images/lambang-kabupaten-bogor.svg" alt="Kabupaten Bogor" class="sidebar-logo-img" style="width: 28px; height: 35px; max-width: 28px; max-height: 35px;">
+            <img src="{{ asset('images/lambang-kabupaten-bogor.svg') }}" alt="Kabupaten Bogor" class="sidebar-logo-img" style="width: 28px; height: 35px; max-width: 28px; max-height: 35px;">
             <div>
                 <span class="block text-xs font-bold tracking-tight text-white leading-tight">Admin Bedah Rumah</span>
                 <span class="block text-[10px] text-emerald-400 font-medium">Kabupaten Bogor</span>
@@ -96,7 +96,7 @@
             {{-- Brand / Identity --}}
             <div class="p-5 border-b border-slate-800/80 flex items-center gap-3.5 bg-slate-950/40">
                 <div class="w-10 h-10 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center shrink-0 p-1 shadow-inner">
-                    <img src="/images/lambang-kabupaten-bogor.svg" alt="Lambang Kabupaten Bogor" class="sidebar-logo-img drop-shadow" style="width: 32px; height: 40px; max-width: 32px; max-height: 40px;">
+                    <img src="{{ asset('images/lambang-kabupaten-bogor.svg') }}" alt="Lambang Kabupaten Bogor" class="sidebar-logo-img drop-shadow" style="width: 32px; height: 40px; max-width: 32px; max-height: 40px;">
                 </div>
                 <div class="min-w-0">
                     <h1 class="text-sm font-extrabold text-white tracking-tight leading-tight truncate">BEDAH RUMAH</h1>
@@ -104,7 +104,6 @@
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                         <p class="text-[11px] text-emerald-400 font-medium truncate">Kabupaten Bogor</p>
                     </div>
-                    <p class="text-[11px] text-emerald-400 font-medium truncate mt-0.5">Kabupaten Bogor</p>
                 </div>
             </div>
 

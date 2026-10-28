@@ -7,7 +7,7 @@
     <meta name="description" content="Sistem Informasi Pelayanan Bedah Rumah dan Pemetaan Sebaran Rumah Tidak Layak Huni (RTLH) Pemerintah Kabupaten Bogor.">
 
     <!-- Favicon - Lambang Tegar Beriman -->
-    <link rel="icon" type="image/svg+xml" href="/images/lambang-kabupaten-bogor.svg">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/lambang-kabupaten-bogor.svg') }}">
 
     <!-- Fonts: Poppins via Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -151,6 +151,7 @@
     {{-- 4. Dokumentasi Realisasi Bedah Rumah --}}
     @include('components.dokumentasi')
 
+<<<<<<< HEAD
     {{-- Footer Resmi Pemerintah Kabupaten Bogor --}}
     <footer class="mt-auto w-full bg-gradient-to-b from-[#0a3a30] via-[#082e26] to-[#041a15] text-teal-100 text-xs border-t border-teal-700/60 shadow-inner">
         {{-- Bagian Atas Footer --}}
@@ -250,6 +251,15 @@
                     </div>
                 </div>
 
+=======
+    {{-- Footer Hijau Solid --}}
+    <footer class="mt-auto py-8 bg-teal-800 text-teal-100 text-xs border-t border-teal-700">
+        <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2.5">
+                <img src="{{ asset('images/lambang-kabupaten-bogor.svg') }}" alt="Kabupaten Bogor" class="h-6 w-auto drop-shadow-sm" width="24" height="30" style="max-height: 24px; width: auto; object-fit: contain;">
+                <span class="font-bold text-white tracking-wide">BEDAH RUMAH</span>
+                <span class="text-teal-200"> Pemerintah Kabupaten Bogor &copy; {{ date('Y') }}</span>
+>>>>>>> 5c81789fb000c731932bec107d058d8bc63186b5
             </div>
         </div>
 

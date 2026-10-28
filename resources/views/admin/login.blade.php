@@ -7,7 +7,7 @@
     <meta name="description" content="Masuk ke Panel Administrator Sistem Informasi Pelayanan Bedah Rumah Kabupaten Bogor.">
 
     <!-- Favicon - Lambang Tegar Beriman -->
-    <link rel="icon" type="image/svg+xml" href="/images/lambang-kabupaten-bogor.svg">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/lambang-kabupaten-bogor.svg') }}">
 
     <!-- Fonts: Poppins via Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,8 +48,8 @@
             
             {{-- Header Card --}}
             <div class="text-center">
-                <a href="/" class="inline-block mb-3">
-                    <img src="/images/lambang-kabupaten-bogor.svg" alt="Lambang Kabupaten Bogor" class="h-16 w-auto mx-auto drop-shadow-xs">
+                <a href="{{ url('/') }}" class="inline-block mb-3">
+                    <img src="{{ asset('images/lambang-kabupaten-bogor.svg') }}" alt="Lambang Kabupaten Bogor" class="h-16 w-auto mx-auto drop-shadow-xs" width="50" height="64" style="height: 64px; width: auto; max-width: 50px; object-fit: contain;">
                 </a>
                 <h1 class="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">
                     Login Admin

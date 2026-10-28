@@ -4,8 +4,8 @@
         <div class="flex items-center justify-between h-20">
             
             {{-- Logo Kabupaten Bogor (Kiri) - Lambang Tegar Beriman --}}
-            <a href="/" class="flex items-center gap-3 group text-decoration-none">
-                <img src="/images/lambang-kabupaten-bogor.svg" alt="Logo Tegar Beriman Kabupaten Bogor" class="h-12 w-auto drop-shadow-sm transition-transform group-hover:scale-105">
+            <a href="{{ url('/') }}" class="flex items-center gap-3 group text-decoration-none">
+                <img src="{{ asset('images/lambang-kabupaten-bogor.svg') }}" alt="Logo Tegar Beriman Kabupaten Bogor" class="h-12 w-auto drop-shadow-sm transition-transform group-hover:scale-105" width="40" height="50" style="height: 48px; width: auto; object-fit: contain;">
                 <div class="flex flex-col text-left">
                     <span class="text-xs sm:text-sm font-extrabold tracking-tight text-slate-900 uppercase leading-none">Bedah Rumah</span>
                     <span class="text-[10px] sm:text-[11px] font-bold text-teal-700 tracking-wider uppercase mt-1">Kabupaten Bogor</span>
@@ -61,12 +61,21 @@
             <span>Dokumentasi</span>
         </a>
         <div class="pt-2 border-t border-slate-100 mt-1">
-            <a href="/login" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-bold px-4 py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 shadow-xs transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
-                </svg>
-                <span>Login</span>
-            </a>
+            @auth
+                <a href="{{ route('admin.dashboard') }}" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-4 py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 shadow-xs transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                    </svg>
+                    <span>Panel Admin</span>
+                </a>
+            @else
+                <a href="{{ route('login') }}" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-bold px-4 py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 shadow-xs transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+                    </svg>
+                    <span>Login</span>
+                </a>
+            @endauth
         </div>
     </div>
     <script>

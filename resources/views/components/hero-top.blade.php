@@ -1,9 +1,9 @@
-﻿{{-- Hero Banner Bagian Depan Atas - Tema Ijo Tosca Solid --}}
+{{-- Hero Banner Bagian Depan Atas - Tema Ijo Tosca Solid --}}
 <section class="relative bg-teal-950 text-white pt-16 overflow-hidden text-center -mt-px" style="padding-bottom: 10rem;">
 
     {{-- Background Image dengan Overlay Bernuansa Teal (Agak Lebih Gelap) --}}
     <div class="absolute inset-0 z-0 overflow-hidden" style="background-color: #022019;">
-        <img src="/images/hero-bg.png" 
+        <img src="{{ asset('images/hero-bg.png') }}" 
              alt="Pembongkaran Bangunan di Bawah Langit Cerah" 
              class="w-full h-full object-cover object-center"
              style="filter: brightness(0.50) contrast(1.10);">
@@ -43,7 +43,7 @@
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
                     <div class="flex items-center gap-3.5">
                         <div class="w-12 h-12 rounded-xl bg-teal-50 border border-teal-100/80 flex items-center justify-center p-1.5 shrink-0 shadow-xs">
-                            <img src="/images/lambang-kabupaten-bogor.svg" alt="Logo Kabupaten Bogor" class="h-9 w-auto drop-shadow-sm object-contain">
+                            <img src="{{ asset('images/lambang-kabupaten-bogor.svg') }}" alt="Logo Kabupaten Bogor" class="h-9 w-auto drop-shadow-sm object-contain" width="36" height="45" style="max-height: 36px; width: auto; object-fit: contain;">
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
@@ -113,7 +113,7 @@
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
                     <div class="flex items-center gap-3.5">
                         <div class="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100/80 flex items-center justify-center p-1.5 shrink-0 shadow-xs">
-                            <img src="/images/logo-kemenpera.svg" alt="Logo Kemenpera" class="h-9 w-auto drop-shadow-sm object-contain">
+                            <img src="{{ asset('images/logo-kemenpera.svg') }}" alt="Logo Kemenpera" class="h-9 w-auto drop-shadow-sm object-contain" width="36" height="45" style="max-height: 36px; width: auto; object-fit: contain;">
                         </div>
                         <div>
                             <div class="flex items-center gap-2">

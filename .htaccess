@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Mencegah akses langsung ke file sensitif (.env, .git, composer.json, dll)
+    RewriteRule ^\.(.*)$ - [F,L]
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor)/ - [F,L]
+    RewriteRule ^(composer\.json|composer\.lock|package\.json|package-lock\.json|vite\.config\.js|artisan) - [F,L]
+
+    # Mengarahkan seluruh request secara otomatis ke folder public/ jika DocumentRoot cPanel belum diset ke /public
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Nonaktifkan Directory Listing
+Options -Indexes
