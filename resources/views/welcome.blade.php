@@ -238,11 +238,6 @@
                 </div>
             </div>
         </div>
-
-        {{-- Baris Hak Cipta Bawah --}}
-        <div class="w-full bg-teal-800/80 border-t border-teal-600/70 py-3.5 text-center text-[11px] text-teal-100">
-            <p>&copy; {{ date('Y') }} Dinas Perumahan, Kawasan Permukiman dan Pertanahan Kabupaten Bogor. Hak Cipta Dilindungi.</p>
-        </div>
     </footer>
 
     {{-- Script Animasi Scroll Halus & Scroll Reveal --}}
