@@ -1,4 +1,4 @@
-{{-- Peta Wilayah & Tabel Data Sebaran RTLH & BSPS Kab. Bogor --}}
+﻿{{-- Peta Wilayah & Tabel Data Sebaran RTLH & BSPS Kab. Bogor --}}
 <section class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pb-16" id="peta-wilayah">
     <div class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
         
@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            {{-- Statistik Ringkas Wilayah --}}
+            <!-- {{-- Statistik Ringkas Wilayah --}}
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-4 border-t border-slate-100">
                 <div class="bg-slate-50/70 p-3 sm:p-3.5 rounded-xl border border-slate-100">
                     <div class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Titik Sasaran</div>
@@ -45,7 +45,7 @@
                     <div class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider">Program BSPS</div>
                     <div class="text-lg sm:text-xl font-black mt-0.5">{{ number_format($totalBsps ?? 9795, 0, ',', '.') }} <span class="text-xs font-semibold text-slate-500">Unit</span></div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         {{-- Container Utama: Berdampingan Kiri Peta & Kanan Tabel --}}
