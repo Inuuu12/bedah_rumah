@@ -1,7 +1,3 @@
-
-{{-- Peta Wilayah & Tabel Data Sebaran RTLH & BSPS Kab. Bogor --}}
-<section class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pb-16" id="peta-wilayah">
-
 {{-- Peta Wilayah & Tabel Data Sebaran RTLH & BSPS Kab. Bogor --}}
 <section class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pb-16 scroll-mt-24 page-sheet-reveal" id="peta-wilayah">
     <div class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">

@@ -75,7 +75,7 @@
         .page-sheet-reveal {
             opacity: 0;
             transform-origin: center center;
-            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
                         transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
@@ -151,24 +151,132 @@
     {{-- 4. Dokumentasi Realisasi Bedah Rumah --}}
     @include('components.dokumentasi')
 
-    {{-- Footer Hijau Solid --}}
-    <footer class="mt-auto py-8 bg-teal-800 text-teal-100 text-xs border-t border-teal-700">
-        <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-2.5">
-                <img src="/images/lambang-kabupaten-bogor.svg" alt="Kabupaten Bogor" class="h-6 w-auto drop-shadow-sm">
-                <span class="font-bold text-white tracking-wide">BEDAH RUMAH</span>
-                <span class="text-teal-200"> Pemerintah Kabupaten Bogor &copy; {{ date('Y') }}</span>
+    {{-- Footer Resmi Pemerintah Kabupaten Bogor --}}
+    <footer class="mt-auto w-full bg-gradient-to-b from-[#0a3a30] via-[#082e26] to-[#041a15] text-teal-100 text-xs border-t border-teal-700/60 shadow-inner">
+        {{-- Bagian Atas Footer --}}
+        <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                
+                {{-- Kolom 1: Identitas & Lembaga (2 Col di Tablet/Desktop) --}}
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-xs p-1.5 flex items-center justify-center border border-white/20 shrink-0 shadow-sm">
+                            <img src="/images/lambang-kabupaten-bogor.svg" alt="Kabupaten Bogor" class="h-9 w-auto object-contain drop-shadow">
+                        </div>
+                        <div>
+                            <h3 class="text-base font-extrabold text-white tracking-wide leading-tight">
+                                SISTEM INFORMASI BEDAH RUMAH
+                            </h3>
+                            <p class="text-xs text-teal-300 font-semibold">
+                                Pemerintah Kabupaten Bogor
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-teal-200/90 leading-relaxed max-w-md">
+                        Portal resmi pemantauan dan keterbukaan informasi penyaluran bantuan Rumah Tidak Layak Huni (RTLH) APBD Kabupaten Bogor dan Bantuan Stimulan Perumahan Swadaya (BSPS) Nasional.
+                    </p>
+
+                    <div class="pt-1 flex flex-wrap items-center gap-2">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-800/80 border border-teal-600/50 text-[11px] font-medium text-teal-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            <span>40 Kecamatan Terdata</span>
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-800/80 border border-teal-600/50 text-[11px] font-medium text-teal-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                            <span>Basis Data Terpadu BNBA</span>
+                        </span>
+                    </div>
+                </div>
+
+                {{-- Kolom 2: Navigasi Cepat --}}
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider border-b border-teal-800/80 pb-2">
+                        Navigasi Cepat
+                    </h4>
+                    <ul class="space-y-2 text-xs text-teal-200/90">
+                        <li>
+                            <a href="#app-html" class="hover:text-white hover:underline transition-colors flex items-center gap-2">
+                                <span class="text-teal-400">&rsaquo;</span>
+                                <span>Beranda Utama</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#peta-wilayah" class="hover:text-white hover:underline transition-colors flex items-center gap-2">
+                                <span class="text-teal-400">&rsaquo;</span>
+                                <span>Peta Wilayah &amp; Sebaran</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dokumentasi" class="hover:text-white hover:underline transition-colors flex items-center gap-2">
+                                <span class="text-teal-400">&rsaquo;</span>
+                                <span>Dokumentasi Realisasi Fisik</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.dashboard') }}" class="hover:text-white hover:underline transition-colors flex items-center gap-2 text-teal-300 font-semibold">
+                                <span class="text-teal-400">&rsaquo;</span>
+                                <span>Dashboard Pengelola</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                {{-- Kolom 3: Pengelola & Kontak --}}
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider border-b border-teal-800/80 pb-2">
+                        Instansi Pengelola
+                    </h4>
+                    <div class="space-y-2 text-xs text-teal-200/90 leading-relaxed">
+                        <p class="font-bold text-white">
+                            Dinas Perumahan, Kawasan Permukiman dan Pertanahan (DPKPP)
+                        </p>
+                        <p class="text-[11px] text-teal-300">
+                            Komplek Perkantoran Pemda Kabupaten Bogor<br>
+                            Jl. Tegar Beriman, Cibinong, Kab. Bogor<br>
+                            Jawa Barat 16914
+                        </p>
+                        <div class="pt-2">
+                            <a 
+                                href="{{ route('login') }}" 
+                                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-teal-800/90 hover:bg-teal-700 text-white font-semibold text-[11px] border border-teal-600/50 transition-colors shadow-xs"
+                            >
+                                <svg class="w-3.5 h-3.5 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+                                </svg>
+                                <span>Portal Petugas (Login)</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="flex items-center gap-4 text-[11px] font-semibold text-teal-100">
-                <a href="#peta-wilayah" class="hover:text-white transition-colors">Peta Wilayah</a>
-                <a href="#dokumentasi" class="hover:text-white transition-colors">Dokumentasi</a>
-                <a href="#app-html" class="hover:text-white transition-colors">Kembali ke Atas </a>
+        </div>
+
+        {{-- Baris Hak Cipta Bawah --}}
+        <div class="w-full bg-[#031410] border-t border-teal-900/80 py-4">
+            <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-teal-400/80">
+                <p class="text-center sm:text-left">
+                    &copy; {{ date('Y') }} Dinas Perumahan, Kawasan Permukiman dan Pertanahan Kabupaten Bogor. Hak Cipta Dilindungi.
+                </p>
+                <div class="flex items-center gap-4 text-teal-300">
+                    <a href="#peta-wilayah" class="hover:text-white transition-colors">Peta Wilayah</a>
+                    <span class="text-teal-700">&bull;</span>
+                    <a href="#dokumentasi" class="hover:text-white transition-colors">Dokumentasi</a>
+                    <span class="text-teal-700">&bull;</span>
+                    <a href="#app-html" class="hover:text-white transition-colors flex items-center gap-1 font-semibold">
+                        <span>Kembali ke Atas</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
     {{-- Floating Back to Top Button --}}
-    <button id="btn-back-to-top" 
-            type="button" 
+    <button id="btn-back-to-top"
+            type="button"
             aria-label="Kembali ke Atas"
             class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-teal-700 text-white shadow-lg shadow-teal-950/20 hover:bg-teal-800 hover:scale-110 active:scale-95 transition-all duration-300 opacity-0 pointer-events-none translate-y-4 flex items-center justify-center group focus:outline-none">
         <svg class="w-5 h-5 transition-transform group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -193,7 +301,7 @@
                     const targetEl = document.querySelector(targetId);
                     if (targetEl) {
                         e.preventDefault();
-                        
+
                         // Buat target sheet langsung visible saat navigasi diklik
                         targetEl.classList.add('is-visible');
                         const sheet = targetEl.classList.contains('page-sheet-reveal') ? targetEl : targetEl.querySelector('.page-sheet-reveal');
@@ -255,13 +363,13 @@
                                 }, 350);
                             }
                         }
-                    } 
+                    }
                     // Jika elemen lewat ke atas (di atas layar), siapkan untuk animasi meluncur turun saat scroll ke atas
                     else if (rect.bottom < -60) {
                         el.classList.remove('is-visible');
                         el.classList.remove('from-bottom');
                         el.classList.add('from-top');
-                    } 
+                    }
                     // Jika elemen lewat ke bawah (di bawah layar), siapkan untuk animasi meluncur naik saat scroll ke bawah
                     else if (rect.top > windowHeight + 60) {
                         el.classList.remove('is-visible');
@@ -278,8 +386,8 @@
                         if (!card.classList.contains('is-visible')) {
                             const allCards = Array.from(staggerCards);
                             const index = allCards.indexOf(card);
-                            const delay = scrollDirection === 'down' 
-                                ? (index % 3) * 110 
+                            const delay = scrollDirection === 'down'
+                                ? (index % 3) * 110
                                 : ((2 - (index % 3)) * 110);
 
                             setTimeout(() => {
