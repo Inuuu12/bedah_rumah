@@ -315,7 +315,7 @@
         modal.classList.remove('hidden');
         content.innerHTML = '<div class="text-center py-6 text-slate-400">Memuat rincian data...</div>';
 
-        fetch(`/admin/bnba/${id}`)
+        fetch(`{{ url('/admin/bnba') }}/${id}`)
             .then(res => res.json())
             .then(res => {
                 if (!res.data) {
@@ -408,7 +408,7 @@
 
         nameSpan.innerText = name;
         select.value = currentStatus;
-        form.action = `/admin/bnba/${id}/status`;
+        form.action = `{{ url('/admin/bnba') }}/${id}/status`;
         modal.classList.remove('hidden');
     }
 

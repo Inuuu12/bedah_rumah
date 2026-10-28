@@ -21,11 +21,11 @@
                 {{-- Quick Legend / Status Markers --}}
                 <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-semibold bg-slate-50 p-2.5 rounded-xl border border-slate-200/80 shadow-xs">
                     <span class="flex items-center gap-1.5 text-slate-700">
-                        <img src="/images/icon-teal-solid.png" class="w-3.5 h-3.5 rounded-full shadow-xs" alt="RTLH">
+                        <img src="{{ asset('images/icon-teal-solid.png') }}" class="w-3.5 h-3.5 rounded-full shadow-xs" alt="RTLH">
                         <span class="text-[11px] font-bold">RTLH (APBD)</span>
                     </span>
                     <span class="flex items-center gap-1.5 text-slate-700">
-                        <img src="/images/icon-dark-solid.png" class="w-3.5 h-3.5 rounded-full shadow-xs" alt="BSPS">
+                        <img src="{{ asset('images/icon-dark-solid.png') }}" class="w-3.5 h-3.5 rounded-full shadow-xs" alt="BSPS">
                         <span class="text-[11px] font-bold">BSPS (APBN/PUPR)</span>
                     </span>
                 </div>
@@ -284,7 +284,7 @@
 
     // 2.1. Memuat Batas Kabupaten Bogor (admin_kab.json)
     function loadBatasKabupaten() {
-        fetch('/admin_kab.json')
+        fetch('{{ asset('admin_kab.json') }}')
             .then(res => res.json())
             .then(geoJson => {
                 if (geoJsonKabLayer && leafletMap.hasLayer(geoJsonKabLayer)) {
@@ -310,7 +310,7 @@
 
     // 2.2. Memuat Batas 40 Kecamatan (admin_kec.json)
     function loadBatasKecamatan() {
-        fetch('/admin_kec.json')
+        fetch('{{ asset('admin_kec.json') }}')
             .then(res => res.json())
             .then(geoJson => {
                 if (geoJsonKecLayer && leafletMap.hasLayer(geoJsonKecLayer)) {
@@ -442,7 +442,7 @@
         if (allKelGeoJsonData) {
             applyKelFeatures(allKelGeoJsonData);
         } else {
-            fetch('/admin_kel.json')
+            fetch('{{ asset('admin_kel.json') }}')
                 .then(res => res.json())
                 .then(data => {
                     allKelGeoJsonData = data;
@@ -581,7 +581,7 @@
 
         // 5. Ambil data asli penerima BNBA dari database via API
         const kecId = kec.id_kec || kec.nama;
-        fetch(`/api/penerima-kecamatan/${kecId}`)
+        fetch(`{{ url('/api/penerima-kecamatan') }}/${kecId}`)
             .then(res => res.json())
             .then(data => {
                 if (data && data.length > 0) {
@@ -641,7 +641,7 @@
         markersSebaranLayer.clearLayers();
 
         dataList.forEach((house, idx) => {
-            const iconImg = house.program === 'RTLH' ? '/images/icon-teal-solid.png' : '/images/icon-dark-solid.png';
+            const iconImg = house.program === 'RTLH' ? '{{ asset('images/icon-teal-solid.png') }}' : '{{ asset('images/icon-dark-solid.png') }}';
             const badgeBg = house.program === 'RTLH' ? '#065f46' : '#0f172a';
 
             const housePinIcon = L.divIcon({
