@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" class="h-12 w-auto">
+    <!-- Emblem Perisai Segi Tiga Khas Tegar Beriman Kab. Bogor -->
+    <g transform="translate(6, 4) scale(0.1)">
+        <!-- Outer Gold Shield -->
+        <path d="M218.485,583.886c-20.6-11.647-37.96-15.7-47.285-18.178-10.761-2.864-53.158-14.147-83.88-37.08-35.218-26.289-49.461-63.682-57.542-84.9a244.249,244.249,0,0,1-15.418-74.94V15.268l461.28.412V369.2a244.249,244.249,0,0,1-15.418,74.94c-8.081,21.218-22.324,58.611-57.542,84.9-30.722,22.933-73.119,34.216-83.88,37.08-9.325,2.482-26.683,6.531-47.285,18.178A170.083,170.083,0,0,0,245,602.84S230.3,590.566,218.485,583.886Z" fill="#FACC15" stroke="#000" stroke-width="8"/>
+        <!-- Inner Green Field -->
+        <polygon points="245 56.451 65 193.958 133.754 416.451 356.246 416.451 425 193.958 245 56.451" fill="#047857"/>
+        <!-- Center Disc with Mountains & Water -->
+        <circle cx="245" cy="256.795" r="135" fill="#0284C7"/>
+        <!-- Mountain Silhouette -->
+        <polygon points="245 130.731 136 319.525 354 319.525 245 130.731" fill="#FACC15"/>
+        <polygon points="245 145.557 148.5 312.7 341.5 312.7 245 145.557" fill="#059669"/>
+        <!-- White Oval Egg / Anda -->
+        <ellipse cx="245" cy="249.163" rx="37" ry="54" fill="#FFFFFF"/>
+        <!-- Kujang Silhouette -->
+        <path d="M245 200 L250 250 L256 265 Q245 272 238 265 L242 245 Z" fill="#D97706"/>
+        <!-- Ribbon Sayaga & Tegar Beriman -->
+        <path d="M334.7,357.38a134.12,134.12,0,0,1-179.4,0l13.41-14.84a114.144,114.144,0,0,0,152.58,0Z" fill="#FACC15"/>
+    </g>
+
+    <!-- Typography -->
+    <g transform="translate(68, 12)">
+        <text x="0" y="10" font-family="'Poppins', system-ui, sans-serif" font-size="9.5" font-weight="800" fill="#64748B" letter-spacing="2">PEMKAB BOGOR</text>
+        <text x="0" y="29" font-family="'Poppins', Georgia, serif" font-size="20" font-weight="900" fill="#0F172A" letter-spacing="0.5">TEGAR BERIMAN</text>
+        <text x="0" y="44" font-family="'Poppins', system-ui, sans-serif" font-size="8" font-weight="800" fill="#0D9488" letter-spacing="1">PRAYOGA TOHAGA SAYAGA</text>
+    </g>
+</svg>

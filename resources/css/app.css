@@ -1,9 +1,35 @@
 @import 'tailwindcss';
 
+@source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --color-kemnaker-dark: #071c3d;
+    --color-kemnaker-primary: #0a254d;
+    --color-kemnaker-blue: #0284c7;
+    --color-kemnaker-accent: #f59e0b;
+    --color-kemnaker-gold: #eab308;
+    --color-kemnaker-surface: #f8fafc;
+}
+
+/* Custom Scrollbar and Micro-Interactions */
+html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+}
+
+.kemnaker-gradient-hero {
+    background: linear-gradient(135deg, #071c3d 0%, #0a254d 50%, #0f3b7d 100%);
+}
+
+.kemnaker-glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.gold-glow {
+    box-shadow: 0 4px 20px -2px rgba(245, 158, 11, 0.35);
 }
