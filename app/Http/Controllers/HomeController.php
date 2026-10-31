@@ -2,17 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posting;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        // 1. Total Program dari Database app_md_bnba
+        // 1. Total Program dari Database app_md_bnba (RTLH APBD & BSPS Pusat)
         $totalRtlh = DB::table('app_md_bnba')->where('cat_bnba', 'like', '%APBD%')->count();
-        $totalRtlhPersiapan = DB::table('app_md_bnba')->where('cat_bnba', 'like', '%APBD%')->where('st_akhir', 'PERSIAPAN')->count();
+        $totalRtlhProses = DB::table('app_md_bnba')->where('cat_bnba', 'like', '%APBD%')->where('st_akhir', 'PROSES')->count();
+        $totalRtlhSelesai = DB::table('app_md_bnba')->where('cat_bnba', 'like', '%APBD%')->where('st_akhir', 'SELESAI')->count();
+        $totalRtlhPersiapan = max(0, $totalRtlh - $totalRtlhProses - $totalRtlhSelesai);
+
         $totalBsps = DB::table('app_md_bnba')->where('cat_bnba', 'BSPS')->count();
-        $totalBspsPersiapan = DB::table('app_md_bnba')->where('cat_bnba', 'BSPS')->where('st_akhir', 'PERSIAPAN')->count();
+        $totalBspsProses = DB::table('app_md_bnba')->where('cat_bnba', 'BSPS')->where('st_akhir', 'PROSES')->count();
+        $totalBspsSelesai = DB::table('app_md_bnba')->where('cat_bnba', 'BSPS')->where('st_akhir', 'SELESAI')->count();
+        $totalBspsPersiapan = max(0, $totalBsps - $totalBspsProses - $totalBspsSelesai);
+
         $totalAllBnba = $totalRtlh + $totalBsps;
 
         $totalDesaKel = DB::table('app_md_kel')
@@ -83,15 +94,76 @@ class HomeController extends Controller
             ];
         }
 
+        // Ambil data dokumentasi / postingan publik dari database (Maksimal 10 kartu di homepage)
+        $postings = collect();
+        $totalPostings = 0;
+        if (Schema::hasTable('postings')) {
+            $totalPostings = Posting::published()->count();
+            $postings = Posting::published()->recent()->with('bnba')->take(10)->get();
+        }
+
         return view('welcome', compact(
             'totalRtlh',
             'totalRtlhPersiapan',
+            'totalRtlhProses',
+            'totalRtlhSelesai',
             'totalBsps',
             'totalBspsPersiapan',
+            'totalBspsProses',
+            'totalBspsSelesai',
             'totalAllBnba',
             'totalDesaKel',
-            'daftar40Kecamatan'
+            'daftar40Kecamatan',
+            'postings',
+            'totalPostings'
         ));
+    }
+
+    /**
+     * Halaman penuh katalog & arsip seluruh dokumentasi publik (Pindah Page)
+     */
+    public function dokumentasi(Request $request): View
+    {
+        $query = Posting::published()->recent()->with('bnba');
+
+        if ($request->filled('q')) {
+            $q = trim($request->input('q'));
+            $query->where(function ($w) use ($q) {
+                $w->where('judul', 'like', "%{$q}%")
+                    ->orWhere('keterangan', 'like', "%{$q}%")
+                    ->orWhere('tim_pelapor', 'like', "%{$q}%")
+                    ->orWhereHas('bnba', function ($b) use ($q) {
+                        $b->where('name_bnba', 'like', "%{$q}%");
+                    });
+            });
+        }
+
+        if ($request->filled('program')) {
+            $program = $request->input('program');
+            $query->whereHas('bnba', function ($b) use ($program) {
+                if ($program === 'RTLH') {
+                    $b->where('cat_bnba', 'like', '%APBD%');
+                } elseif ($program === 'BSPS') {
+                    $b->where('cat_bnba', 'BSPS');
+                }
+            });
+        }
+
+        if ($request->filled('kecamatan')) {
+            $kecId = $request->input('kecamatan');
+            $query->whereHas('bnba', function ($b) use ($kecId) {
+                $b->where('id_kec', $kecId);
+            });
+        }
+
+        $postings = $query->paginate(12)->withQueryString();
+
+        $kecamatanList = DB::table('app_md_kec')
+            ->where('flag_del', 0)
+            ->orderBy('name_kec')
+            ->get();
+
+        return view('dokumentasi.index', compact('postings', 'kecamatanList'));
     }
 
     /**
@@ -133,13 +205,19 @@ class HomeController extends Controller
             ->limit(350)
             ->get();
 
-        // Samarkan NIK untuk privasi dan set program RTLH/BSPS serta koordinat terbaik
+        // Samarkan NIK dan nama untuk privasi publik serta set program RTLH/BSPS & koordinat
         $warga->transform(function ($item) {
             $item->program = str_contains(strtoupper($item->cat_bnba ?? ''), 'APBD') ? 'RTLH' : 'BSPS';
 
             if (strlen($item->nik ?? '') >= 16) {
-                $item->nik = substr($item->nik, 0, 6).'******'.substr($item->nik, -4);
+                $item->nik = Auth::check()
+                    ? $item->nik
+                    : substr($item->nik, 0, 6).'******'.substr($item->nik, -4);
             }
+
+            // Sensor nama warga untuk privasi publik: menyisakan 1 huruf awal per kata jika belum login admin
+            $item->nama = self::maskName($item->nama);
+
             $item->desa_full = ($item->desa ? 'Desa/Kel. '.$item->desa : '').
                                ($item->rt ? ', RT '.$item->rt : '').
                                ($item->rw ? '/RW '.$item->rw : '');
@@ -168,5 +246,78 @@ class HomeController extends Controller
         });
 
         return response()->json($warga);
+    }
+
+    /**
+     * Sensor nama penerima untuk privasi publik dengan menyisakan 1 huruf awal per kata.
+     * Contoh: "Didi Suryadi" -> "D*** S******", "SAPINAH" -> "S******"
+     * Jika admin sudah login, nama TIDAK disensor (tampilkan nama lengkap asli).
+     */
+    public static function maskName(?string $name): string
+    {
+        if (empty($name)) {
+            return '-';
+        }
+
+        // Jika admin sudah login, tampilkan nama asli lengkap tanpa masking
+        if (Auth::check()) {
+            return $name;
+        }
+
+        $words = preg_split('/\s+/', trim($name));
+        $masked = [];
+
+        foreach ($words as $word) {
+            $len = mb_strlen($word);
+            if ($len <= 1) {
+                $masked[] = $word;
+            } else {
+                $masked[] = mb_substr($word, 0, 1).str_repeat('*', $len - 1);
+            }
+        }
+
+        return implode(' ', $masked);
+    }
+
+    /**
+     * Sensor judul dokumentasi publik jika memuat nama penerima.
+     * Contoh: "Realisasi Bedah Rumah - Didi Suryadi (Desa A)" -> "Realisasi Bedah Rumah - D*** S****** (Desa A)"
+     * Jika admin sudah login, judul TIDAK disensor (tampilkan judul asli lengkap).
+     */
+    public static function maskTitle(?string $title, ?string $knownName = null): string
+    {
+        if (empty($title)) {
+            return '';
+        }
+
+        // Jika admin sudah login, tampilkan judul asli lengkap tanpa masking
+        if (Auth::check()) {
+            return $title;
+        }
+
+        // 1. Jika nama asli diketahui, ganti langsung
+        if (! empty($knownName) && stripos($title, $knownName) !== false) {
+            return str_ireplace($knownName, self::maskName($knownName), $title);
+        }
+
+        // 2. Format standar: "Kegiatan ... - Nama Orang (Lokasi...)" atau "Kegiatan ... - Nama Orang"
+        if (str_contains($title, ' - ')) {
+            $parts = explode(' - ', $title, 2);
+            $prefix = $parts[0];
+            $rest = $parts[1];
+
+            // Jika ada kurung lokasi di akhir, misal "Didi Suryadi (CIAPUS, Kec. CIOMAS)"
+            if (preg_match('/^(.*?)\s*(\(.*?\))\s*$/', $rest, $matches)) {
+                $namePart = trim($matches[1]);
+                $locPart = ' '.trim($matches[2]);
+                if (! empty($namePart)) {
+                    return $prefix.' - '.self::maskName($namePart).$locPart;
+                }
+            } else {
+                return $prefix.' - '.self::maskName(trim($rest));
+            }
+        }
+
+        return $title;
     }
 }

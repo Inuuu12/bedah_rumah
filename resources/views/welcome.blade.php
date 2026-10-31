@@ -13,13 +13,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Leaflet CSS & JS for Map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <!-- Styles / Scripts via Vite -->
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+    @php
+        $isLocalDev = in_array(request()->getHost(), ['localhost', '127.0.0.1']);
+        $hasManifest = file_exists(public_path('build/manifest.json'));
+        $hasHot = $isLocalDev && file_exists(public_path('hot'));
+    @endphp
+    @if ($hasManifest || $hasHot)
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @else
         <!-- Fallback Tailwind CSS CDN -->
@@ -226,9 +232,6 @@
                         Instansi Pengelola
                     </h4>
                     <div class="space-y-2 text-xs text-teal-100 leading-relaxed">
-                        <p class="font-bold text-white">
-                            Dinas Perumahan, Kawasan Permukiman dan Pertanahan (DPKPP)
-                        </p>
                         <p class="text-[11px] text-teal-100">
                             Komplek Perkantoran Pemda Kabupaten Bogor<br>
                             Jl. Tegar Beriman, Cibinong, Kab. Bogor<br>

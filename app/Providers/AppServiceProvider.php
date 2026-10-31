@@ -19,6 +19,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Cegah Vite hot reload mengarah ke localhost jika diakses dari domain server/staging/production
+        if (! $this->app->runningInConsole()) {
+            $host = request()->getHost();
+            if (! in_array($host, ['localhost', '127.0.0.1']) && file_exists(public_path('hot'))) {
+                @unlink(public_path('hot'));
+            }
+        }
     }
 }

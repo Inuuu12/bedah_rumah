@@ -816,7 +816,7 @@
                 color: color,
                 badgeClass: badgeClass,
                 kode: `${program}-${kec.nama.substring(0,3).toUpperCase()}-2026-${String(i + 1).padStart(3, '0')}`,
-                nama: `Penerima Sasaran ${i + 1}`,
+                nama: {!! Auth::check() ? "'Penerima Sasaran ' + (i + 1)" : "'P*** S****** ' + (i + 1)" !!},
                 nik: `3201${String(kec.no).padStart(2, '0')}******${String(1001 + (i * 47)).padStart(4, '0')}`,
                 desa: `Desa/Kel. di ${kec.nama}, RT 0${(i % 5) + 1}/RW 0${(i % 4) + 1}`,
                 kondisi: isRTLH ? 'Program Bantuan RTLH APBD' : 'Program Bantuan BSPS PUPR',

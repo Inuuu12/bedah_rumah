@@ -1,14 +1,13 @@
-{{-- Hero Banner Bagian Depan Atas - Tema Ijo Tosca Solid --}}
+{{-- Hero Banner Bagian Depan Atas - Tema Ijo Tosca Solid Bersih --}}
 <section class="relative bg-teal-950 text-white pt-16 overflow-hidden text-center -mt-px" style="padding-bottom: 10rem;">
 
-    {{-- Background Image dengan Overlay Bernuansa Teal (Agak Lebih Gelap) --}}
+    {{-- Background Image dengan Overlay Bernuansa Teal Elegan (Dibuat Lebih Terang & Jelas) --}}
     <div class="absolute inset-0 z-0 overflow-hidden" style="background-color: #022019;">
-        <img src="{{ asset('images/hero-bg.png') }}" 
-             alt="Pembongkaran Bangunan di Bawah Langit Cerah" 
+        <img src="{{ asset('images/bg.jpeg') }}" 
+             alt="Background Portal Bedah Rumah Kabupaten Bogor" 
              class="w-full h-full object-cover object-center"
-             style="filter: brightness(0.50) contrast(1.10);">
-        <div class="absolute inset-0" 
-             style="background-color: rgba(2, 22, 17, 0.75);"></div>
+             style="filter: brightness(0.82) contrast(1.05);">
+        <div class="absolute inset-0" style="background-color: rgba(2, 22, 17, 0.45);"></div>
     </div>
 
     {{-- Konten Utama Hero --}}
@@ -33,11 +32,11 @@
 </section>
 
 {{-- 2 Kotak Rekapitulasi Program Bedah Rumah: Kab. Bogor (RTLH) & Pusat Kemenpera (BSPS) --}}
-<section class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 relative z-20 pb-16 page-sheet-reveal" id="monitoring-program" style="margin-top: -125px;">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-20 pb-16 page-sheet-reveal" id="monitoring-program" style="margin-top: -125px;">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6 items-stretch">
         
         {{-- 1. KOTAK KIRI: PEMKAB BOGOR - REHABILITASI RUMAH TIDAK LAYAK HUNI (RTLH) TAHUN 2026 --}}
-        <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-5 sm:p-7 flex flex-col justify-between hover:shadow-2xl transition-all duration-300">
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-4 sm:p-6 flex flex-col justify-between hover:shadow-2xl transition-all duration-300">
             <div>
                 {{-- Header Kartu Kab. Bogor --}}
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
@@ -66,48 +65,58 @@
                     Data pemantauan program bedah rumah rehabilitasi RTLH melalui Anggaran Pendapatan &amp; Belanja Daerah (APBD) Kabupaten Bogor.
                 </p>
 
-                {{-- 3 Metrik / Statistik Simple: Hanya Nama dan Unit --}}
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {{-- 4 Metrik / Statistik Simple: Total Penerima, Persiapan, Pembangunan, Selesai --}}
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5">
                     
                     {{-- 1. Total Penerima --}}
-                    <div class="bg-slate-50/80 hover:bg-teal-50/40 rounded-xl p-4 sm:p-5 border border-slate-100 transition-colors">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                    <div class="bg-slate-50/80 hover:bg-teal-50/40 rounded-xl p-3 sm:p-4 border border-slate-100 transition-colors flex flex-col justify-between min-w-0">
+                        <span class="text-[9px] sm:text-[9.5px] xl:text-[10px] font-bold uppercase tracking-wider text-slate-500 whitespace-nowrap block mb-1.5">
                              Total Penerima
                         </span>
                         <div class="flex items-baseline gap-1.5">
-                            <span class="text-xl sm:text-2xl font-black tracking-tight">{{ number_format($totalRtlh ?? 1502, 0, ',', '.') }}</span>
+                            <span class="text-xl sm:text-2xl font-black tracking-tight text-slate-900">{{ number_format($totalRtlh ?? 1502, 0, ',', '.') }}</span>
                             <span class="text-xs font-semibold text-slate-500">Unit</span>
                         </div>
                     </div>
 
-                    {{-- 2. Dalam Proses --}}
-                    <div class="bg-slate-50/80 hover:bg-amber-50/40 rounded-xl p-4 sm:p-5 border border-slate-100 transition-colors">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                    {{-- 2. Persiapan --}}
+                    <div class="bg-slate-50/80 hover:bg-amber-50/40 rounded-xl p-3 sm:p-4 border border-slate-100 transition-colors flex flex-col justify-between min-w-0">
+                        <span class="text-[9px] sm:text-[9.5px] xl:text-[10px] font-bold uppercase tracking-wider text-amber-700 whitespace-nowrap block mb-1.5">
+                             Persiapan
+                        </span>
+                        <div class="flex items-baseline gap-1.5">
+                            <span class="text-xl sm:text-2xl font-black tracking-tight text-amber-900">{{ number_format($totalRtlhPersiapan ?? 1502, 0, ',', '.') }}</span>
+                            <span class="text-xs font-semibold text-slate-500">Unit</span>
+                        </div>
+                    </div>
+
+                    {{-- 3. Pembangunan --}}
+                    <div class="bg-slate-50/80 hover:bg-blue-50/40 rounded-xl p-3 sm:p-4 border border-slate-100 transition-colors flex flex-col justify-between min-w-0">
+                        <span class="text-[9px] sm:text-[9.5px] xl:text-[10px] font-bold uppercase tracking-wider text-blue-700 whitespace-nowrap block mb-1.5">
                              Pembangunan
                         </span>
                         <div class="flex items-baseline gap-1.5">
-                            <span class="text-xl sm:text-2xl font-black tracking-tight">{{ number_format($totalRtlhPersiapan ?? 1502, 0, ',', '.') }}</span>
+                            <span class="text-xl sm:text-2xl font-black tracking-tight text-blue-900">{{ number_format($totalRtlhProses ?? 0, 0, ',', '.') }}</span>
                             <span class="text-xs font-semibold text-slate-500">Unit</span>
                         </div>
                     </div>
 
-                    {{-- 3. Selesai --}}
-                    <div class="bg-slate-50/80 hover:bg-emerald-50/40 rounded-xl p-4 sm:p-5 border border-slate-100 transition-colors">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                    {{-- 4. Selesai --}}
+                    <div class="bg-slate-50/80 hover:bg-emerald-50/40 rounded-xl p-3 sm:p-4 border border-slate-100 transition-colors flex flex-col justify-between min-w-0">
+                        <span class="text-[9px] sm:text-[9.5px] xl:text-[10px] font-bold uppercase tracking-wider text-emerald-700 whitespace-nowrap block mb-1.5">
                              Selesai
                         </span>
                         <div class="flex items-baseline gap-1.5">
-                            <span class="text-xl sm:text-2xl font-black tracking-tight">0</span>
+                            <span class="text-xl sm:text-2xl font-black tracking-tight text-emerald-900">{{ number_format($totalRtlhSelesai ?? 0, 0, ',', '.') }}</span>
                             <span class="text-xs font-semibold text-slate-500">Unit</span>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
 
         {{-- 2. KOTAK KANAN: PEMERINTAH PUSAT (KEMENPERA) - BANTUAN SOSIAL PERUMAHAN SWADAYA (BSPS) TAHUN 2026 --}}
-        <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-5 sm:p-7 flex flex-col justify-between hover:shadow-2xl transition-all duration-300">
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-4 sm:p-6 flex flex-col justify-between hover:shadow-2xl transition-all duration-300">
             <div>
                 {{-- Header Kartu Pusat / Kemenpera --}}
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
@@ -136,42 +145,52 @@
                     Data penyaluran Bantuan Stimulan / Sosial Perumahan Swadaya (BSPS) Kementerian Perumahan dan Kawasan Permukiman RI.
                 </p>
 
-                {{-- 3 Metrik / Statistik Simple: Hanya Nama dan Unit --}}
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {{-- 4 Metrik / Statistik Simple: Total Penerima, Persiapan, Pembangunan, Selesai --}}
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5">
                     
                     {{-- 1. Total Penerima --}}
-                    <div class="bg-slate-50/80 hover:bg-sky-50/40 rounded-xl p-4 sm:p-5 border border-slate-100 transition-colors">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                    <div class="bg-slate-50/80 hover:bg-sky-50/40 rounded-xl p-3 sm:p-4 border border-slate-100 transition-colors flex flex-col justify-between min-w-0">
+                        <span class="text-[9px] sm:text-[9.5px] xl:text-[10px] font-bold uppercase tracking-wider text-slate-500 whitespace-nowrap block mb-1.5">
                              Total Penerima
                         </span>
                         <div class="flex items-baseline gap-1.5">
-                            <span class="text-xl sm:text-2xl font-black tracking-tight">{{ number_format($totalBsps ?? 9795, 0, ',', '.') }}</span>
+                            <span class="text-xl sm:text-2xl font-black tracking-tight text-slate-900">{{ number_format($totalBsps ?? 9795, 0, ',', '.') }}</span>
                             <span class="text-xs font-semibold text-slate-500">Unit</span>
                         </div>
                     </div>
 
-                    {{-- 2. Dalam Proses --}}
-                    <div class="bg-slate-50/80 hover:bg-amber-50/40 rounded-xl p-4 sm:p-5 border border-slate-100 transition-colors">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                    {{-- 2. Persiapan --}}
+                    <div class="bg-slate-50/80 hover:bg-amber-50/40 rounded-xl p-3 sm:p-4 border border-slate-100 transition-colors flex flex-col justify-between min-w-0">
+                        <span class="text-[9px] sm:text-[9.5px] xl:text-[10px] font-bold uppercase tracking-wider text-amber-700 whitespace-nowrap block mb-1.5">
+                             Persiapan
+                        </span>
+                        <div class="flex items-baseline gap-1.5">
+                            <span class="text-xl sm:text-2xl font-black tracking-tight text-amber-900">{{ number_format($totalBspsPersiapan ?? 9795, 0, ',', '.') }}</span>
+                            <span class="text-xs font-semibold text-slate-500">Unit</span>
+                        </div>
+                    </div>
+
+                    {{-- 3. Pembangunan --}}
+                    <div class="bg-slate-50/80 hover:bg-blue-50/40 rounded-xl p-3 sm:p-4 border border-slate-100 transition-colors flex flex-col justify-between min-w-0">
+                        <span class="text-[9px] sm:text-[9.5px] xl:text-[10px] font-bold uppercase tracking-wider text-blue-700 whitespace-nowrap block mb-1.5">
                             Pembangunan
                         </span>
                         <div class="flex items-baseline gap-1.5">
-                            <span class="text-xl sm:text-2xl font-black tracking-tight">{{ number_format($totalBspsPersiapan ?? 9795, 0, ',', '.') }}</span>
+                            <span class="text-xl sm:text-2xl font-black tracking-tight text-blue-900">{{ number_format($totalBspsProses ?? 0, 0, ',', '.') }}</span>
                             <span class="text-xs font-semibold text-slate-500">Unit</span>
                         </div>
                     </div>
 
-                    {{-- 3. Selesai --}}
-                    <div class="bg-slate-50/80 hover:bg-emerald-50/40 rounded-xl p-4 sm:p-5 border border-slate-100 transition-colors">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                    {{-- 4. Selesai --}}
+                    <div class="bg-slate-50/80 hover:bg-emerald-50/40 rounded-xl p-3 sm:p-4 border border-slate-100 transition-colors flex flex-col justify-between min-w-0">
+                        <span class="text-[9px] sm:text-[9.5px] xl:text-[10px] font-bold uppercase tracking-wider text-emerald-700 whitespace-nowrap block mb-1.5">
                              Selesai
                         </span>
                         <div class="flex items-baseline gap-1.5">
-                            <span class="text-xl sm:text-2xl font-black tracking-tight">0</span>
+                            <span class="text-xl sm:text-2xl font-black tracking-tight text-emerald-900">{{ number_format($totalBspsSelesai ?? 0, 0, ',', '.') }}</span>
                             <span class="text-xs font-semibold text-slate-500">Unit</span>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

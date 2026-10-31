@@ -15,7 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
 
     <!-- Styles / Scripts via Vite -->
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+    @php
+        $isLocalDev = in_array(request()->getHost(), ['localhost', '127.0.0.1']);
+        $hasManifest = file_exists(public_path('build/manifest.json'));
+        $hasHot = $isLocalDev && file_exists(public_path('hot'));
+    @endphp
+    @if ($hasManifest || $hasHot)
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @else
         <!-- Fallback Tailwind CSS CDN -->
@@ -40,7 +45,7 @@
         }
     </style>
 </head>
-<body class="h-full bg-slate-50 text-slate-800 flex flex-col justify-between antialiased">
+<body class="h-full bg-slate-50 text-slate-800 flex flex-col justify-between antialiased selection:bg-emerald-600 selection:text-white">
 
     {{-- Main Login Card --}}
     <main class="w-full max-w-md mx-auto px-6 py-4 flex-1 flex flex-col justify-center">
@@ -102,8 +107,8 @@
                             value="{{ old('email') }}" 
                             required 
                             autofocus 
-                            placeholder="admin@bogorkab.go.id" 
-                            class="w-full text-xs bg-white border border-slate-300 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600 transition-all font-medium"
+                            placeholder="admin, rtlh.cibinong, dsb" 
+                            class="w-full text-xs bg-white border border-slate-300 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 transition-all font-medium"
                         >
                     </div>
                 </div>
@@ -127,7 +132,7 @@
                             id="password" 
                             required 
                             placeholder="••••••••" 
-                            class="w-full text-xs bg-white border border-slate-300 rounded-xl pl-9 pr-10 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600 transition-all font-medium"
+                            class="w-full text-xs bg-white border border-slate-300 rounded-xl pl-9 pr-10 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 transition-all font-medium"
                         >
                         <button 
                             type="button" 
@@ -149,7 +154,7 @@
                 {{-- Remember Me & Info --}}
                 <div class="flex items-center justify-between text-xs pt-1">
                     <label class="flex items-center gap-2 cursor-pointer select-none text-slate-600 font-medium">
-                        <input type="checkbox" name="remember" class="w-4 h-4 text-teal-700 rounded border-slate-300 focus:ring-teal-600">
+                        <input type="checkbox" name="remember" class="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
                         <span>Ingat saya di perangkat ini</span>
                     </label>
                 </div>
@@ -158,9 +163,9 @@
                 <div class="pt-2">
                     <button 
                         type="submit" 
-                        class="w-full bg-teal-700 hover:bg-teal-800 text-white font-bold py-2.5 px-4 rounded-xl text-xs sm:text-sm shadow-xs hover:shadow-md transition-all active:scale-[0.99] flex items-center justify-center gap-2"
+                        class="w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold py-2.5 px-4 rounded-xl text-xs sm:text-sm shadow-xs hover:shadow-md transition-all active:scale-[0.99] flex items-center justify-center gap-2"
                     >
-                        <span>Masuk </span>
+                        <span>Masuk</span>
                     </button>
                 </div>
             </form>
